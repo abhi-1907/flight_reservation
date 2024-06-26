@@ -128,6 +128,7 @@ class PaymentFrame extends JFrame {
         JTextField txtCardCVV = new JTextField(3);
         JButton btnPay = new JButton("Pay");
         JButton btnHome = new JButton("Home");
+        JButton btnClose = new JButton("Close");
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -146,12 +147,14 @@ class PaymentFrame extends JFrame {
         panel.add(lblCardCVV, gbc);
         gbc.gridx = 1;
         panel.add(txtCardCVV, gbc);
-
-        gbc.gridx = 1;
-        gbc.gridy = 3;
-        panel.add(btnPay, gbc);
         gbc.gridx = 0;
         gbc.gridy = 3;
+        panel.add(btnClose, gbc);
+
+        gbc.gridx = 1;
+        panel.add(btnPay, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
         panel.add(btnHome, gbc);
 
         btnPay.addActionListener(e -> {
@@ -168,6 +171,9 @@ class PaymentFrame extends JFrame {
         });
 
         btnHome.addActionListener(e -> setVisible(false));
+        btnClose.addActionListener(e -> {
+            setVisible(false);
+        });
 
         add(panel);
     }
