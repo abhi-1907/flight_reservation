@@ -2,8 +2,8 @@ package booking.flight;
 import java.io.*;
 import java.util.*;
 
-class FlightData {
-    private static final String FILE_PATH = "flight_data.txt";
+public class FlightData {
+     static final String FILE_PATH = "flight_data.txt";
 
     String name;
     String source;

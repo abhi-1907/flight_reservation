@@ -1,8 +1,6 @@
 package search.searchbackend;
-
-
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 class DijkstraAlgorithm {
     private Map<String, Integer> distances = new HashMap<>();
@@ -78,11 +76,6 @@ class DijkstraAlgorithm {
         return path.get(0).equals(source) ? path : new ArrayList<>();
     }
 }
-
-}
-
-import java.util.*;
-import java.io.*;
 
 public class FlightSearch {
     public static void main(String[] args) {
