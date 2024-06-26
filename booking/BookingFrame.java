@@ -1,6 +1,5 @@
 package booking;
-import booking.flight.FlightData;
-
+import booking.flight.flightdata;
 import java.awt.*;
 import javax.swing.*;
 
@@ -33,8 +32,9 @@ public class BookingFrame extends JFrame {
 
         
         JLabel lblFlightSelection = createLabel("Select Flight:");
-        List<String> flights = FlightData.listAllFlights();
-        JComboBox<String> cmbFlights = new JComboBox<>(flights.toArray(new String[0]));
+        String[] flights = flightdata.listAllFlights();
+        
+        JComboBox<String> cmbFlights = new JComboBox<>(flights);
         JLabel lblPassengerName = createLabel("Passenger Name:");
         JTextField txtPassengerName = new JTextField(20);
         JLabel lblPassengerEmail = createLabel("Passenger Email:");

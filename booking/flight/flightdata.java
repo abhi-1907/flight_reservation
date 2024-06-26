@@ -2,7 +2,7 @@ package booking.flight;
 import java.io.*;
 import java.util.*;
 
-public class FlightData {
+public class flightdata {
      static final String FILE_PATH = "flight_data.txt";
 
     String name;
@@ -12,11 +12,11 @@ public class FlightData {
     int seats;
     boolean availability;
 
-    public FlightData(String n) {
+    public flightdata(String n) {
         name = n;
     }
 
-    public FlightData(String n, String s, String d, int dist, int seat, boolean t) {
+    public flightdata(String n, String s, String d, int dist, int seat, boolean t) {
         name = n;
         source = s;
         destination = d;
@@ -58,7 +58,7 @@ public class FlightData {
         }
     }
 
-    public void updateFlightData(FlightData newdata) {
+    public void updateFlightData(flightdata newdata) {
         List<String> flightDataList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
@@ -89,20 +89,24 @@ public class FlightData {
         return baseFare * numSeats;
     }
 
-    // Utility method to list all flights (for testing purposes)
-    public static List<FlightData> listAllFlights() {
-        List<FlightData> flights = new ArrayList<>();
+    public static String[] listAllFlights() {
+        List<String> flightStrings = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] flightData = line.split(",");
-                FlightData flight = new FlightData(flightData[0], flightData[1], flightData[2], Integer.parseInt(flightData[3]), Integer.parseInt(flightData[4]), Boolean.parseBoolean(flightData[5]));
-                flights.add(flight);
+                flightStrings.add(flightData[0]); // Assuming flight name is the first field in the data
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return flights;
+        return flightStrings.toArray(new String[0]);
+    }
+
+    @Override
+    public String toString() {
+        return "Flight: " + name + ", Source: " + source + ", Destination: " + destination +
+               ", Distance: " + distance + " km, Seats: " + seats + ", Available: " + (availability ? "Yes" : "No");
     }
 }
 
